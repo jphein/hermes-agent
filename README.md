@@ -257,6 +257,18 @@ scripts/run_tests.sh
 
 ---
 
+## This fork: JP's "Familiar" Slack bot
+
+`jphein/hermes-agent` runs a personal Slack bot, **Familiar**, on the host `familiar`. Hermes is the
+Slack transport only (Socket Mode, files, images, voice-note transcription, allowlist of one user).
+Every message is answered by headless Claude Code (`claude -p`) behind a small OpenAI-compatible
+bridge, because Hermes' own agent loop calling Anthropic directly is billed as third-party "extra
+usage". The gateway runs from a pinned worktree of this fork with a separate profile
+(`~/.hermes/profiles/familiar`), so the default `~/.hermes` stays untouched. No core files are
+patched: the JP-queue Home tab is a profile plugin using `register_slack_action_handler`.
+
+Bridge, systemd units, manifest, plugin and tests live in a separate repo at `~/Projects/hermes` on familiar.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
