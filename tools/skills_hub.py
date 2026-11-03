@@ -4007,7 +4007,7 @@ def _load_hermes_index() -> Optional[dict]:
     #
     # We deliberately DON'T let httpx negotiate Brotli here.  The index is a
     # large body (tens of MB); httpx's streaming Brotli decoder, backed by
-    # brotlicffi 1.2.0.1 (pinned for Discord attachment decoding), trips over
+    # brotlicffi (pinned for Discord attachment decoding; 1.2.0.1 measured), trips over
     # its own output_buffer_limit on payloads this size and raises
     # DecodingError("brotli: decoder process called with data when
     # 'can_accept_more_data()' is False").  That surfaces as an empty Skills
